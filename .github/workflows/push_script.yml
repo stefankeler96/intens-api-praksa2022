@@ -1,0 +1,15 @@
+name: Maven push script
+on: [push]
+jobs:
+  Maven-push-script:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Maven build/package
+        run: mvn -B package --file pom.xml
+      - name: Docker image push
+        run: heroku container:push web --app intens-api-praksa2022
+      - name: Docker image release
+        run: heroku container:release web --app intens-api-praksa2022        

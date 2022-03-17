@@ -1,0 +1,3 @@
+FROM openjdk:8
+COPY /target/spring-boot-docker-image.jar spring-boot-docker-image.jar
+CMD [ "sh", "-c", "java -Dserver.port=$PORT -jar /spring-boot-docker-image.jar" ]
